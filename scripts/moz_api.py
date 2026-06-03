@@ -17,7 +17,6 @@ import argparse
 import json
 import sys
 import time
-from typing import Optional
 
 try:
     import requests
@@ -27,10 +26,11 @@ except ImportError:
 
 # Import credential helpers (same directory)
 import os
+
 _SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _SCRIPTS_DIR)
 try:
-    from backlinks_auth import get_moz_api_key, load_config
+    from backlinks_auth import get_moz_api_key
     from google_auth import validate_url
 except ImportError:
     print("Error: backlinks_auth.py and google_auth.py required in scripts/", file=sys.stderr)

@@ -14,7 +14,6 @@ import tempfile
 import urllib.parse
 import urllib.request
 
-
 API_ROOT = "https://api.github.com/repos/AgriciDaniel/flow/contents"
 _ALLOWED_HOST = "api.github.com"
 _SIZE_LIMIT = 5 * 1024 * 1024  # 5 MB

@@ -16,7 +16,7 @@ import json
 import sys
 import time
 from typing import Optional
-from urllib.parse import urlparse, quote
+from urllib.parse import urlparse
 
 try:
     import requests
@@ -25,10 +25,11 @@ except ImportError:
     sys.exit(1)
 
 import os
+
 _SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _SCRIPTS_DIR)
 try:
-    from backlinks_auth import get_bing_api_key, get_bing_verified_sites, load_config
+    from backlinks_auth import get_bing_api_key, get_bing_verified_sites
     from google_auth import validate_url
 except ImportError:
     print("Error: backlinks_auth.py and google_auth.py required in scripts/", file=sys.stderr)
@@ -414,7 +415,7 @@ def main():
                 print(f"  Shared:                     {data.get('shared_count', 0)}")
                 print(f"  Unique to you:              {data.get('unique_count', 0)}")
                 if data.get("gap_domains"):
-                    print(f"\n  Top gap domains:")
+                    print("\n  Top gap domains:")
                     for d in data["gap_domains"][:10]:
                         print(f"    {d}")
         elif result.get("error"):

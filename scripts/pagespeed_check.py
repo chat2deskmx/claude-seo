@@ -26,12 +26,12 @@ except ImportError:
 
 # Import credential helper (same directory)
 try:
-    from google_auth import get_api_key, load_config, validate_url
+    from google_auth import get_api_key, validate_url
 except ImportError:
     # Fallback: try relative import from scripts/
     import os
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    from google_auth import get_api_key, load_config, validate_url
+    from google_auth import get_api_key, validate_url
 
 PSI_ENDPOINT = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
 CRUX_ENDPOINT = "https://chromeuxreport.googleapis.com/v1/records:queryRecord"
@@ -583,7 +583,7 @@ def _print_psi_summary(psi: dict):
     diags = psi.get("diagnostics", [])
     notable_diags = [d for d in diags if d.get("score") is not None and d["score"] < 0.9]
     if notable_diags:
-        print(f"\nDiagnostics (needs attention):")
+        print("\nDiagnostics (needs attention):")
         for d in notable_diags[:5]:
             score_pct = f"{d['score']:.0%}" if d['score'] is not None else "info"
             print(f"  [{score_pct}] {d['title']}: {d.get('display', '')}")

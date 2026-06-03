@@ -18,11 +18,11 @@ from pathlib import Path
 from urllib.parse import quote
 
 import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import numpy as np
 
+matplotlib.use("Agg")
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+import numpy as np
 
 # --- Brand ---
 
@@ -1101,7 +1101,9 @@ def generate_report(output_dir: str, screenshots_dir: str = SCREENSHOTS_DIR) -> 
     fig_n = [1]
 
     def nf() -> int:
-        n = fig_n[0]; fig_n[0] += 1; return n
+        n = fig_n[0]
+        fig_n[0] += 1
+        return n
 
     print("Building HTML sections...")
     challenge_html, _ = _build_challenge_section(flow_path, nf(), ss)
